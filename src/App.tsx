@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { Link } from "react-router";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div className="">
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="grid grid-cols-3 gap-4">
+        <Link to="/expr-01">
+          <div className="aspect-square border-2 rounded-2xl flex justify-center items-center">
+            Expr 01
+          </div>
+        </Link>
+        <Link to="/expr-02">
+          <div className="aspect-square border-2 rounded-2xl flex justify-center items-center">
+            Expr 02
+          </div>
+        </Link>
+        <Link to="/color-quiz">
+          <div className="aspect-square border-2 rounded-2xl flex justify-center items-center">
+            Color Quiz
+          </div>
+        </Link>
       </div>
-      
+
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <h2>Do Experiments. Get Experience.</h2>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Check <code>src/main.tsx</code> for Routes configuration
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
