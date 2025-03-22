@@ -1,0 +1,18 @@
+.gradient-text {
+  --x: 50%;
+  --y: 50%;
+  --width: 60%;
+  background: radial-gradient(
+    var(--width) 100% at var(--x) var(--y),
+    #fcfcfc 0%,
+    #000 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: --x 1s, --y 1s;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2rem;
+}
