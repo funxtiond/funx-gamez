@@ -2,7 +2,7 @@ import { Settings2Icon, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Slide, toast, ToastContainer } from "react-toastify";
 
-const SettingsModal = ({
+export const SettingsModal = ({
   colorNum,
   setColorNum,
 }: {
