@@ -15,6 +15,22 @@ function App() {
             Expr 02
           </div>
         </Link>
+        <Link to="/expr-03">
+          <div className="aspect-square border-2 rounded-2xl flex justify-center items-center">
+            Expr 03
+          </div>
+        </Link>
+        <Link to="/expr-04">
+          <div className="aspect-square border-2 rounded-2xl flex justify-center items-center">
+            Expr 04 <br />
+            (jsPDF case)
+          </div>
+        </Link>
+        <Link to="/expr-05">
+          <div className="aspect-square border-2 rounded-2xl flex justify-center items-center">
+            Expr 05
+          </div>
+        </Link>
         <Link to="/color-quiz">
           <div className="aspect-square border-2 rounded-2xl flex justify-center items-center">
             Color Quiz
