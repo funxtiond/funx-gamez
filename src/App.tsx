@@ -31,6 +31,11 @@ function App() {
             Expr 05
           </div>
         </Link>
+        <Link to="/expr-06">
+          <div className="aspect-square border-2 rounded-2xl flex justify-center items-center">
+            Expr 06
+          </div>
+        </Link>
         <Link to="/color-quiz">
           <div className="aspect-square border-2 rounded-2xl flex justify-center items-center">
             Color Quiz
