@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 type Pos = { x: number; y: number };
 
@@ -8,28 +8,45 @@ type DWParamType = {
   // position: Pos;
 };
 
-const DraggableWrapper = ({ children }: DWParamType) => {
-  const [offset, setOffset] = useState<Pos>({ x: 0, y: 0 });
+const DraggableFloatingButton = ({ children }: DWParamType) => {
+  // const [offset, setOffset] = useState<Pos>({ x: 0, y: 0 });
   const [position, setPosition] = useState<Pos>({ x: 0, y: 0 });
+  const ref = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = (e: MouseEvent) => {
-    const { clientX, clientY } = e;
-
-    console.log({ clientX, clientY, offsetX: offset.x, offsetY: offset.y });
-    setPosition({
-      x: clientX - offset.x,
-      y: clientY - offset.y,
-    });
-  };
+  // useEffect(() => {
+  useLayoutEffect(() => {
+    if (!ref.current) return;
+    const elementHeight = ref.current.getBoundingClientRect().height;
+    const elementWidth = ref.current.getBoundingClientRect().width;
+    const margin = 24;
+    const initialPositionX = window.innerWidth - elementWidth - margin;
+    const initialPositionY = window.innerHeight - elementHeight - margin;
+    setPosition({ x: initialPositionX, y: initialPositionY });
+  }, []);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     // Calculate offset between mouse cursor & element top-left
-    const rect = (e.target as HTMLDivElement).getBoundingClientRect();
-    setOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    // const rect = (e.target as HTMLDivElement).getBoundingClientRect();
+    // setOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
   };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    const { clientX, clientY } = e;
+
+    console.log({ clientX, clientY});
+    const btnWidth = ref.current?.getBoundingClientRect().width ?? 0
+    const btnHeight = ref.current?.getBoundingClientRect().height ?? 0
+
+    // Put cursor in center of button while dragging
+    setPosition({
+      x: clientX - btnWidth / 2, 
+      y: clientY - btnHeight / 2,
+    });
+  };
+
   const handleMouseUp = () => {
     window.removeEventListener("mousemove", handleMouseMove);
     window.removeEventListener("mouseup", handleMouseUp);
@@ -37,8 +54,9 @@ const DraggableWrapper = ({ children }: DWParamType) => {
 
   return (
     <div
+      ref={ref}
       onMouseDown={handleMouseDown}
-      className="fixed p-4 rounded-full aspect-square flex items-center bg-amber-500 cursor-pointer"
+      className="fixed p-4 rounded-full w-20 aspect-square flex items-center bg-amber-500 cursor-pointer select-none"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -52,5 +70,5 @@ const DraggableWrapper = ({ children }: DWParamType) => {
 
 export default function Expr06() {
   // alert("rerendered!");
-  return <DraggableWrapper>Drag Me</DraggableWrapper>;
+  return <DraggableFloatingButton>Drag Me</DraggableFloatingButton>;
 }
