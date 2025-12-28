@@ -1,0 +1,49 @@
+.scroll-container {
+  overflow: hidden;
+  width: 100%;
+  background: #f9f9f9;
+  padding: 0;
+  position: relative;
+}
+
+.scroll-track {
+  display: flex;
+  gap: 2rem;
+  width: fit-content;
+}
+
+.scroll-item {
+  flex: 0 0 auto;
+  width: 25%;
+  aspect-ratio: 3/2;
+  background: linear-gradient(135deg, #00c9ff, #92fe9d);
+  color: white;
+  border-radius: 30px;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.scroll-item:hover .description {
+  opacity: 1;
+}

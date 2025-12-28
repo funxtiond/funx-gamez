@@ -89,7 +89,7 @@ export default function ColorQuiz() {
   };
 
   return (
-    <div>
+    <div className="m-0 flex place-items-center min-w-[320px] min-h-[100vh]">
       <h1>Color Quiz</h1>
       <SettingsModal colorNum={colorNum} setColorNum={setColorNum} />
       <div className="flex flex-wrap gap-[16px] my-[48px] justify-center max-w-[600px]">
