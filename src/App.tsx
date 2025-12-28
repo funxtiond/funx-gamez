@@ -41,6 +41,9 @@ function App() {
         <Link to="/color-quiz">
           <div className={commonClasses}>Color Quiz</div>
         </Link>
+        <Link to="/sample-home">
+          <div className={commonClasses}>Sample Home Page</div>
+        </Link>
       </div>
     </>
   );

@@ -58,9 +58,9 @@ const createTestWrapper = () => {
 test("handles API error on data fetching", async () => {
   // Mock an error response for this specific test
   server.use(
-    http.get("https://jsonplaceholder.typicode.com/users", () => {
-      // return HttpResponse.json({ message: "Failed" }, { status: 500 });
-      return HttpResponse.error();
+    http.get("*/uers", () => {
+      return HttpResponse.json({ message: "Failed" }, { status: 500 });
+      // return HttpResponse.error();
     })
   );
 
